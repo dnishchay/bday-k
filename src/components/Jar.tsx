@@ -6,7 +6,7 @@ import type { ButterflyState } from '../types'
 
 interface JarProps {
   butterflies: ButterflyState[]
-  caughtIds: Set<string>
+  takenIds: Set<string>
   onCatch: (id: string) => void
   roundKey: number
   celebrate: boolean
@@ -16,8 +16,8 @@ interface JarProps {
 const REPEL_RADIUS = 56
 const REPEL_STRENGTH = 26
 
-export function Jar({ butterflies, caughtIds, onCatch, roundKey, celebrate, inviting }: JarProps) {
-  const active = butterflies.filter((b) => !caughtIds.has(b.id))
+export function Jar({ butterflies, takenIds, onCatch, roundKey, celebrate, inviting }: JarProps) {
+  const active = butterflies.filter((b) => !takenIds.has(b.id))
 
   const interiorRef = useRef<HTMLDivElement | null>(null)
   const repelEls = useRef<Map<string, HTMLDivElement>>(new Map())

@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion'
 import type { CSSProperties, MouseEvent } from 'react'
 import type { ButterflyState } from '../types'
-import { useFlight } from '../context/flightContext'
+import { useCarrier } from '../context/carrierContext'
 
 interface ButterflyProps {
   butterfly: ButterflyState
@@ -18,7 +18,7 @@ interface ButterflyStyle extends CSSProperties {
 }
 
 export function Butterfly({ butterfly, onCatch, registerRepelEl }: ButterflyProps) {
-  const { emitFlight } = useFlight()
+  const { beginCarry } = useCarrier()
 
   const style: ButterflyStyle = {
     left: `${butterfly.x}%`,
@@ -31,7 +31,7 @@ export function Butterfly({ butterfly, onCatch, registerRepelEl }: ButterflyProp
   }
 
   const handleClick = (event: MouseEvent<HTMLButtonElement>) => {
-    emitFlight(butterfly.id, event.currentTarget.getBoundingClientRect(), butterfly.hue)
+    beginCarry(event.currentTarget.getBoundingClientRect(), butterfly.hue)
     onCatch(butterfly.id)
   }
 

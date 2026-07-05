@@ -300,27 +300,62 @@
   }
 }
 
-/* Flight — the wisp of light each caught butterfly leaves behind */
-.flight-overlay {
+/* Carrier — a freed butterfly holding its phrase center-stage before it
+   homes to its slot in the message card */
+.carrier-scrim {
   position: fixed;
   inset: 0;
   pointer-events: none;
-  z-index: 60;
+  z-index: 55;
+  background: radial-gradient(ellipse at 50% 42%, rgba(5, 8, 14, 0.55) 0%, rgba(5, 8, 14, 0.2) 45%, transparent 75%);
 }
 
-.flight-wisp {
+.carrier {
   position: fixed;
-  width: 10px;
-  height: 10px;
-  margin: -5px 0 0 -5px;
-  border-radius: 50%;
-  background: radial-gradient(
-    circle,
-    hsl(var(--wisp-hue) 90% 88%) 0%,
-    hsl(var(--wisp-hue) 85% 72%) 45%,
-    transparent 75%
-  );
-  box-shadow: 0 0 16px 4px hsl(var(--wisp-hue) 90% 75% / 0.65);
+  pointer-events: none;
+  z-index: 60;
+  transform: translate(-50%, -50%);
+}
+
+.carrier-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  max-width: min(80vw, 420px);
+}
+
+.carrier-butterfly {
+  display: block;
+  width: clamp(34px, 6vw, 46px);
+  height: clamp(28px, 5vw, 38px);
+  filter: drop-shadow(0 0 10px hsl(var(--carrier-hue) 90% 75% / 0.7));
+}
+
+.carrier-butterfly .wing {
+  animation: wing-flap 0.4s ease-in-out infinite;
+}
+
+.carrier-butterfly .wing-shape {
+  fill: hsl(var(--carrier-hue) 85% 78%);
+}
+
+.carrier-butterfly .wing-lower {
+  fill: hsl(var(--carrier-hue) 75% 68%);
+}
+
+.carrier-text {
+  display: inline-block;
+  padding: 10px 18px;
+  border-radius: 14px;
+  background: rgba(20, 16, 30, 0.55);
+  border: 1px solid hsl(var(--carrier-hue) 70% 75% / 0.35);
+  box-shadow: 0 0 30px hsl(var(--carrier-hue) 80% 70% / 0.25);
+  color: #f5efe3;
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(1rem, 3vw, 1.2rem);
+  text-align: center;
+  text-shadow: 0 0 14px hsl(var(--carrier-hue) 90% 80% / 0.5);
 }
 
 /* Progress */

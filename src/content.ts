@@ -26,5 +26,5 @@ export const fragments: Fragment[] = [
 ]
 
 export const finaleHeading = `Happy Birthday, ${friendName}! 🦋`
-export const finaleSubtext = 'May this year be as awsome as you are.'
+export const finaleSubtext = 'May this year be as awesome as you are.'
 export const replayLabel = 'Set them free again'

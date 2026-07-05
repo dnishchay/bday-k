@@ -1,15 +1,15 @@
-import { useFlight } from '../context/flightContext'
+import { useCarrier } from '../context/carrierContext'
 
 interface FragmentSpanProps {
   id: string
   text: string
-  revealed: boolean
 }
 
 // The words are always in the DOM; a soft light-mask sits over them and
-// dissolves away once the butterfly carrying this phrase has been caught.
-export function FragmentSpan({ id, text, revealed }: FragmentSpanProps) {
-  const { registerFragmentEl } = useFlight()
+// dissolves away once the butterfly carrying this phrase has settled in.
+export function FragmentSpan({ id, text }: FragmentSpanProps) {
+  const { registerFragmentEl, revealedIds } = useCarrier()
+  const revealed = revealedIds.has(id)
 
   return (
     <span className={`fragment ${revealed ? 'fragment--revealed' : ''}`}>
